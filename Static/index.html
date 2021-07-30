@@ -1,0 +1,197 @@
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link
+            rel="apple-touch-icon"
+            type="image/png"
+            href="./images/LOUIS-LOGO-NEW@0.5x.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="CodePen"/>
+    <link
+            rel="shortcut icon"
+            type="image/png"
+            href="./images/LOUIS-LOGO-NEW@0.5x.png"
+    />
+    <link
+            rel="mask-icon"
+            type="image/png"
+            href="./images/LOUIS-LOGO-NEW@0.5x.png"
+            color="#111"
+    />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/dashboard.css"/>
+    <script>
+        window.console = window.console || function (t) {
+        };
+    </script>
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+<!--Hey! This is the original version
+of Simple CSS Waves-->
+
+<div class="header">
+    <button class="glass-url goMenu" onClick="goMenu()">=</button>
+    <!--Content before waves-->
+    <div class="inner-header flex">
+        <!--Just the logo.. Don't mind this-->
+        <h1 id="head-title">DashBoard</h1>
+        <div class="glass">
+            <div class="glass-container">
+                <div id="glass-text">
+                    <div class="model-title">
+                        <div class="title-model-1">
+                            <p class="glass-title">系统信息</p>
+                            <div class="title-model-2">
+                                <hr class="glass-hr">
+                                <p class="glass-content title-model-2-content" id="server-version"></p>
+                                <hr class="glass-hr">
+                                <p class="glass-content title-model-2-content" id="platform-machine"></p>
+                            </div>
+                        </div>
+                        <div class="glass-gauge">
+                            <svg id="fillgauge-1" width="45%" height="250"></svg>
+                            <svg id="fillgauge-2" width="45%" height="250"></svg>
+                        </div>
+                        <div class="glass-gauge-title">
+                            <p class="glass-content" id="title-CPU"></p>
+                            <p class="glass-content" id="title-Memory"></p>
+                        </div>
+                    </div>
+                    <div class="model-app" id="model-app">
+                        <p class="glass-title">应用列表</p>
+                        <div class="application-list" id="application-list">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Waves Container-->
+    <div>
+        <svg
+                class="waves"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28"
+                preserveAspectRatio="none"
+                shape-rendering="auto"
+        >
+            <defs>
+                <path
+                        id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                ></path>
+            </defs>
+            <g class="parallax">
+                <use
+                        xlink:href="#gentle-wave"
+                        x="48"
+                        y="0"
+                        fill="rgba(255,255,255,0.7"
+                ></use>
+                <use
+                        xlink:href="#gentle-wave"
+                        x="48"
+                        y="3"
+                        fill="rgba(255,255,255,0.5)"
+                ></use>
+                <use
+                        xlink:href="#gentle-wave"
+                        x="48"
+                        y="5"
+                        fill="rgba(255,255,255,0.3)"
+                ></use>
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff"></use>
+            </g>
+        </svg>
+    </div>
+    <!--Waves end-->
+</div>
+<!--Header ends-->
+
+<!--Content starts-->
+<div class="content flex">
+    <p class="buttom-title" id="buttom-title"></p>
+</div>
+
+<button class="glass-url goCreate" onClick="goCreate()">+</button>
+
+<!--Content ends-->
+<script src="./js/axios.min.js"></script>
+<script src="./js/init.js"></script>
+<script src="./js/d3.js"></script>
+<script src="./js/dashboard-chart.js"></script>
+<script src="./js/dashboard.js"></script>
+</body>
+</html>
+
+
+<!-- app-1
+<div class="application-container">
+    <div class="app-config-info">
+        <div class="app-config-info-left">
+            <p class="app-title">TinyServer</p>
+            <p class="app-path">/User/ericaaron/Developer/Python/Default/TinyServer</p>
+        </div>
+        <div class="app-config-info-right">
+            <p class="app-running" id="app-text-sign">运行中</p>
+            <p class="app-time">21天前</p>
+        </div>
+        <div class="app-config-info-sign">
+            <div class="app-sign app-sign-run"></div>
+        </div>
+    </div>
+    <div class="app-active-info">
+        <div class="progress-title">
+            <p class="glass-content">CPU：20%</p>
+            <p class="glass-content">内存：486MB</p>
+        </div>
+        <div class="progress-container">
+            <div class="progress">
+                <div class="progress-bar" id="cpu-progress" style="width: 20%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" id="mem-progress" style="width: 50%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+app-2
+<div class="application-container">
+    <div class="app-config-info">
+        <div class="app-config-info-left">
+            <p class="app-title">MesReporter</p>
+            <p class="app-path">/User/ericaaron/Developer/Python/Default/TinyServer</p>
+        </div>
+        <div class="app-config-info-right">
+            <p class="app-stop">停止</p>
+            <p class="app-time">21天前</p>
+        </div>
+        <div class="app-config-info-sign">
+            <div class="app-sign app-sign-stop"></div>
+        </div>
+    </div>
+    <div class="app-active-info">
+        <div class="progress-title">
+            <p class="glass-content">CPU：0%</p>
+            <p class="glass-content">内存：0MB</p>
+        </div>
+        <div class="progress-container">
+            <div class="progress">
+                <div class="progress-bar" id="cpu-progress" style="width: 0%"></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" id="mem-progress" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+</div> -->

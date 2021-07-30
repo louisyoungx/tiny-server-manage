@@ -1,0 +1,478 @@
+/*@import url(https://fonts.useso.com/css?family=Lato:300:400);*/
+
+body {
+    margin: 0;
+    --background-left: rgba(84, 58, 183, 1);
+    --background-right: rgba(0, 172, 193, 1);
+    --font-color: rgba(255, 255, 255, 0.76);
+}
+
+h1 {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 48px;
+}
+
+p {
+    font-family: "Lato", sans-serif;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #333333;
+}
+
+.header {
+    position: relative;
+    text-align: center;
+    background: linear-gradient(
+            60deg,
+            var(--background-left) 0%,
+            var(--background-right) 100%
+    );
+    color: white;
+}
+
+.logo {
+    width: 50px;
+    fill: white;
+    padding-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.inner-header {
+    height: 80vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    /*Flexbox for containers*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -7px;
+    /*Fix for safari gap*/
+    min-height: 100px;
+    max-height: 150px;
+}
+
+.content {
+    position: relative;
+    text-align: center;
+    background-color: white;
+}
+
+.glass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 90vw;
+    height: 80vh;
+    border-radius: 5vw;
+    background: rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.3));
+}
+
+.glass-container {
+    width: 85vw;
+    height: 70vh;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#glass-text {
+    overflow: auto;
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.liquidFillGaugeText {
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
+.glass-gauge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.glass-form {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.model-button {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.glass-url {
+    margin: 0;
+    background: rgba(93, 117, 153, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 48px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.goMenu {
+    position: absolute;
+    right: 10vw;
+    top: 1vh;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 2.5vh;
+}
+
+.goBack {
+    position: absolute;
+    left: 10vw;
+    top: 1vh;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 2.5vh;
+}
+
+.goDelete {
+    position: absolute;
+    right: 2vw;
+    bottom: 15vh;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 5vh;
+    font-size: 6vh;
+}
+
+.model-button-item {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    transition: 0.5s;
+    border-radius: 5vw 0 0 5vw;
+    background: rgba(93, 117, 153, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 48px;
+    color: var(--font-color);
+}
+
+#model-button-item-1 {
+    border-radius: 5vw 0 0 5vw;
+}
+#model-button-item-2 {
+    border-radius: 0;
+}
+#model-button-item-3 {
+    border-radius: 0 5vw 5vw 0;
+}
+
+.model-button-selected{
+    background: rgba(255,255,255,0);
+    border-bottom-color: rgba(255,255,255,0);
+}
+
+.glass-title {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 48px;
+    color: var(--font-color);
+    margin: 1vh 0 1vh 3%;
+    text-align: left;
+}
+
+.glass-content {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 2vh;
+    color: var(--font-color);
+    text-align: left;
+    margin: 0 0 1vh 3%;
+}
+
+.transitionToLeft {
+
+}
+
+.glass-card {
+    width: 100%;
+}
+
+.glass-card p {
+    margin: 0 0 1vh;
+}
+
+.long-text {
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+.environ {
+    width: 45%;
+}
+
+.row-list {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.row-item {
+    width: 100%;
+    max-width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.row-item p {
+    font-size: 2vh;
+}
+
+.open-file {
+    width: 95%;
+}
+
+.log-contaniner {
+    font-size: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    scrollbar-arrow-color: rgba(255, 255, 255, 0);
+    scrollbar-highlight-color: rgba(255, 255, 255, 0);
+    scrollbar-base-color: rgba(255, 255, 255, 0);
+}
+
+.glass-item-list {
+    color: #fff;
+    text-align: left;
+}
+
+.glass-item {
+    border-radius: 50px;
+}
+
+.item-time {
+    color: #fff;
+    background-color: #80BEAF;
+    text-align: center;
+    font-size: 40px;
+}
+
+.item-module {
+    background-color: #F2A490;
+}
+
+.item-content {
+    background-color: #5D7599;
+}
+
+
+.glass-input {
+    width: 80%;
+    height: 7%;
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(-2px 5px 5px rgba(0, 0, 0, 0.3));
+    border-radius: 2vw;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 40px;
+    text-align: center;
+    color: var(--font-color);
+}
+
+.glass-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 30px;
+}
+
+.glass-input::-moz-placeholder { /* Firefox 19+ */
+    font-size: 30px;
+}
+
+.glass-input::-ms-input-placeholder { /* IE 10+ */
+    font-size: 30px;
+}
+
+.glass-input::-moz-placeholder { /* Firefox 18- */
+    font-size: 30px;
+}
+
+.glass-input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    outline: none;
+}
+
+.glass-button {
+    margin-top: 15%;
+    width: 80%;
+    height: 8%;
+    border-radius: 5vw;
+    background: rgba(93, 117, 153, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+    filter: drop-shadow(-2px 5px 5px rgba(0, 0, 0, 0.3));
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 48px;
+    color: var(--font-color);
+}
+
+
+.buttom-title {
+    font-size: 28px !important;
+}
+
+/* Animation */
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+/*Shrinking for Mobile*/
+@media only screen and (max-device-width: 768px) {
+    .glass {
+        min-height: 800px;
+    }
+    .swal2-show {
+        transform: scale(1.5);
+    }
+}
+
+/*Shrinking for PC*/
+@media only screen and (min-device-width: 768px) {
+    .waves {
+        height: 40px;
+        min-height: 40px;
+    }
+
+    .content {
+        height: auto;
+    }
+
+    .inner-header {
+        transform: translateY(2vh);
+    }
+
+    h1 {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .glass {
+        min-height: 600px;
+        width: 30vw;
+        border-radius: 1vw;
+    }
+
+    .glass-container {
+        width: 29vw;
+        height: 100%;
+    }
+
+    .glass-title {
+        font-size: 24px;
+    }
+
+    .glass-button {
+        font-size: 24px;
+    }
+
+    .glass-input {
+        font-size: 20px;
+    }
+
+    #glass-text {
+        margin-top: 2vh;
+        font-size: 20px;
+        height: 100%;
+    }
+
+    .item-time {
+        font-size: 20px;
+    }
+
+    .waves {
+        height: 5vh;
+    }
+
+    .glass-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-size: 20px;
+    }
+
+    .glass-input::-moz-placeholder { /* Firefox 19+ */
+        font-size: 20px;
+    }
+
+    .glass-input::-ms-input-placeholder { /* IE 10+ */
+        font-size: 20px;
+    }
+
+    .glass-input::-moz-placeholder { /* Firefox 18- */
+        font-size: 20px;
+    }
+
+    .application-container {
+        height: 20vh;
+    }
+}

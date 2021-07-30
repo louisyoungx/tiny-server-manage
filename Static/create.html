@@ -1,0 +1,142 @@
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link
+            rel="apple-touch-icon"
+            type="image/png"
+            href="./images/LOUIS-LOGO-NEW@0.5x.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="CodePen"/>
+    <link
+            rel="shortcut icon"
+            type="image/png"
+            href="./images/LOUIS-LOGO-NEW@0.5x.png"
+    />
+    <link
+            rel="mask-icon"
+            type="image/png"
+            href="./images/LOUIS-LOGO-NEW@0.5x.png"
+            color="#111"
+    />
+    <title>Create</title>
+    <link rel="stylesheet" href="./css/create.css"/>
+    <script>
+        window.console = window.console || function (t) {
+        };
+    </script>
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+<!--Hey! This is the original version
+of Simple CSS Waves-->
+
+<div class="header">
+    <button class="glass-url goBack" onClick="goBack()"><</button>
+    <button class="glass-url goMenu" onClick="goMenu()">=</button>
+    <!--Content before waves-->
+    <div class="inner-header flex">
+        <!--Just the logo.. Don't mind this-->
+        <h1 id="head-title">Create</h1>
+        <div class="glass">
+            <div class="glass-container">
+                <div id="glass-text">
+                    <div class="model-title">
+
+<!--                        name,
+            environment="python3",
+            main="runserver.py",
+            args="",
+            exec_dir="",
+            daemon=True,
+            max_retry=10,
+            config_file="/Config/config.ini"-->
+                        <div class="glass-container">
+                            <h1 class="glass-title">应用名称(*)</h1>
+                            <input class="glass-input" type="text" required="required">
+                            <h1 class="glass-title">运行目录(*)</h1>
+                            <input class="glass-input" type="text" required="required">
+                            <h1 class="glass-title">环境名称</h1>
+                            <input class="glass-input" type="text" value="python3">
+                            <h1 class="glass-title">启动主文件</h1>
+                            <input class="glass-input" type="text" value="runserver.py">
+                            <h1 class="glass-title">启动参数</h1>
+                            <input class="glass-input" type="text">
+                            <h1 class="glass-title">进程守护(True/False)</h1>
+                            <input class="glass-input" type="text" value="True">
+                            <h1 class="glass-title">自动重启时的最大重试次数</h1>
+                            <input class="glass-input" type="text" value="10">
+                            <h1 class="glass-title">配置文件所在目录</h1>
+                            <input class="glass-input" type="text" value="/Config/config.ini">
+                            <input class="glass-button" type="submit" value="提交" onclick="createApp()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Waves Container-->
+    <div>
+        <svg
+                class="waves"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28"
+                preserveAspectRatio="none"
+                shape-rendering="auto"
+        >
+            <defs>
+                <path
+                        id="gentle-wave"
+                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                ></path>
+            </defs>
+            <g class="parallax">
+                <use
+                        xlink:href="#gentle-wave"
+                        x="48"
+                        y="0"
+                        fill="rgba(255,255,255,0.7"
+                ></use>
+                <use
+                        xlink:href="#gentle-wave"
+                        x="48"
+                        y="3"
+                        fill="rgba(255,255,255,0.5)"
+                ></use>
+                <use
+                        xlink:href="#gentle-wave"
+                        x="48"
+                        y="5"
+                        fill="rgba(255,255,255,0.3)"
+                ></use>
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff"></use>
+            </g>
+        </svg>
+    </div>
+    <!--Waves end-->
+</div>
+<!--Header ends-->
+
+<!--Content starts-->
+<div class="content flex">
+    <p class="buttom-title" id="buttom-title"></p>
+</div>
+
+<!--Content ends-->
+<script src="./js/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="./js/init.js"></script>
+<script src="./js/create.js"></script>
+</body>
+</html>
+
+<!--<script src="./js/axios.min.js"></script>-->
+<!--<script src="./js/init.js"></script>-->
+<!--<script src="./js/create.js"></script>-->
