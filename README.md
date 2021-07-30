@@ -1,19 +1,16 @@
-# TinyServer
+# TinyServerManage
 
 #### 1. 介绍
-​		本地Python项目运行基础框架，无需安装第三方库，内置纯Python原生实现的多进程http服务器，可通过内置restful web api或网页查看本地日志，可定时执行代码，可进行消息通知，可定义服务器api查看运行状态，可自定义web模版。
+​		服务器Python项目web管理器，可查看应用进程概况，系统资源情况，并可启动/关闭项目
 
 #### 2. 主要功能
-- 为服务器运行Python项目提供日志，配置管理
-  - web网页查看日志
-  - Restful api提供项目信息接口
-
-- 定时执行模块，根据开始结束时间，定期执行/Core/main.py
-- 消息通知模块，发送邮件或配合mirai框架发送QQ信息
-- 服务器api
-  - 可通过内置api查询程序信息与系统状态
-  - 可自定义简易api
-- 自定义web模版
+- 通过web管理服务器运行的Python项目
+- 系统概况
+- 应用列表
+- 添加应用
+- 删除应用
+- 配置查看
+- 日志查看
 
 #### 3. 基本模块
 
@@ -31,9 +28,14 @@
 - Server
   - handler - 包含主要的HTTP请求处理与api
   - server - 用于配置并启动服务器线程
+  - url - 用于配置api路径
+  - api - 用于配置json api
 - Static
   - web网页查看日志
   - Restful api提供项目信息接口
+- Task
+  - task - 任务列表管理
+  - application - 虚拟Python应用类
 
 #### 4. 运行环境
 
@@ -42,11 +44,11 @@
 #### 5. 安装教程
 
 1. ```shell
-   git clone https://gitee.com/louisyoung1/tiny-server.git
+   git clone https://gitee.com/louisyoung1/tiny-server-manage.git
    ```
 
 2. ```sh
-   cd tiny-server
+   cd tiny-server-manage
    ```
 
 #### 6. 使用说明
@@ -55,7 +57,12 @@
 
 2. 按注释要求编辑/Config/config.ini文件中配置项
    
-3. 确保你此时在/tiny-server目录下，并运行
+3. 确保你此时在/tiny-server-manage目录下，并安装依赖
+   ```sh
+   python3 -m pip install -r requirements.txt
+   ```
+   
+4. 启动项目运行
 
    ```sh
    python3 runserver
@@ -66,31 +73,71 @@
 ```shell
 .
 ├── Config
+│   ├── __init__.py
 │   ├── config.ini
 │   └── settings.py
 ├── Core
+│   ├── __init__.py
 │   └── core.py
 ├── Logger
 │   ├── Log_Files
-│   │   └── TinyServer.log
+│   │   ├── TaskList.json
+│   │   └── TinyServerManager.log
+│   ├── __init__.py
 │   └── logger.py
 ├── Message
+│   ├── __init__.py
 │   └── message.py
 ├── Scheduler
-│   ├── scheduler.py
-│   └── tools.py
+│   ├── __init__.py
+│   └── scheduler.py
 ├── Server
+│   ├── __init__.py
+│   ├── api.py
 │   ├── handler.py
-│   └── server.py
+│   ├── server.py
+│   └── url.py
 ├── Static
 │   ├── 404.html
-│   ├── change.html
+│   ├── contact.html
+│   ├── create.html
 │   ├── css
+│   │   ├── contact.css
+│   │   ├── create.css
+│   │   ├── dashboard.css
+│   │   ├── log.css
+│   │   ├── menu.css
+│   │   ├── task.css
+│   │   └── waves.css
 │   ├── favicon.ico
 │   ├── images
+│   │   └── LOUIS-LOGO-NEW@0.5x.png
 │   ├── index.html
 │   ├── js
-│   └── log.html
+│   │   ├── axios.min.js
+│   │   ├── contact.js
+│   │   ├── create.js
+│   │   ├── d3.js
+│   │   ├── dashboard-chart.js
+│   │   ├── dashboard.js
+│   │   ├── init.js
+│   │   ├── log.js
+│   │   ├── menu.js
+│   │   └── task.js
+│   ├── log.html
+│   ├── menu.html
+│   └── task.html
+├── TEST
+│   ├── http_example.py
+│   ├── log_example.py
+│   ├── logs_old.py
+│   ├── static_test.py
+│   └── subprocess.txt
+├── Task
+│   ├── __init__.py
+│   ├── application.py
+│   └── task.py
+├── requirements.txt
 └── runserver.py
 ```
 
