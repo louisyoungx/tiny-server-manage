@@ -62,10 +62,10 @@
    python3 -m pip install -r requirements.txt
    ```
    
-4. 启动项目运行
+4. 启动项目运行(需要root权限，sudo启动)
 
    ```sh
-   python3 runserver
+   sudo python3 runserver
    ```
 
 #### 7. 目录结构
