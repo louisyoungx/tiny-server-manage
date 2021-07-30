@@ -136,6 +136,7 @@ p {
     font-weight: 300;
     letter-spacing: 2px;
     font-size: 48px;
+    cursor: pointer;
     color: rgba(255, 255, 255, 0.7);
 }
 
@@ -179,6 +180,7 @@ p {
     font-weight: 300;
     letter-spacing: 2px;
     font-size: 48px;
+    cursor: pointer;
     color: var(--font-color);
 }
 
@@ -512,5 +514,28 @@ p {
 
     .application-container {
         height: 20vh;
+    }
+    .goMenu {
+        right: 35vw;
+        font-size: 2vh;
+    }
+    .goBack {
+        left: 35vw;
+        font-size: 2vh;
+    }
+    .inner-header {
+        pointer-events: none;
+    }
+    .glass {
+        pointer-events: all;
+    }
+    .model-button {
+        height: 5vh;
+    }
+    .model-button-item {
+        font-size: 2vh;
+    }
+    .glass-item {
+        font-size: 2vh;
     }
 }
