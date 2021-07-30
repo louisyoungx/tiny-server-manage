@@ -36,6 +36,12 @@
 <!--Hey! This is the original version
 of Simple CSS Waves-->
 
+<div class="dragbox" id="dragbox">
+    <div class="dragcon"></div>
+    <div class="dragcon dragcon-right"></div>
+    <button class="glass-url goDelete ball" onClick="goDelete()">-</button>
+</div>
+
 <div class="header">
     <button class="glass-url goBack" onClick="goBack()"><</button>
     <button class="glass-url goMenu" onClick="goMenu()">=</button>
@@ -48,9 +54,15 @@ of Simple CSS Waves-->
             <div class="glass-container">
                 <div id="glass-text">
                     <div class="model-button">
-                        <button class="model-button-item model-button-selected" id="model-button-item-1" name="overview" onClick="taskPage(event)">概况</button>
-                        <button class="model-button-item" id="model-button-item-2" name="config" onClick="taskPage(event)">配置</button>
-                        <button class="model-button-item" id="model-button-item-3" name="logger" onClick="taskPage(event)">日志</button>
+                        <button class="model-button-item model-button-selected" id="model-button-item-1" name="overview"
+                                onClick="taskPage(event)">概况
+                        </button>
+                        <button class="model-button-item" id="model-button-item-2" name="config"
+                                onClick="taskPage(event)">配置
+                        </button>
+                        <button class="model-button-item" id="model-button-item-3" name="logger"
+                                onClick="taskPage(event)">日志
+                        </button>
                     </div>
                     <div class="model-title" id="mount"></div>
                 </div>
@@ -106,7 +118,6 @@ of Simple CSS Waves-->
     <p class="buttom-title" id="buttom-title"></p>
 </div>
 
-<button class="glass-url goDelete" onClick="goDelete()">-</button>
 
 <!--Content ends-->
 <script src="./js/axios.min.js"></script>
@@ -116,8 +127,6 @@ of Simple CSS Waves-->
 <script src="./js/task.js"></script>
 </body>
 </html>
-
-
 
 
 <!--

@@ -96,6 +96,11 @@ class TaskManager(object):
         return None
 
     def delete(self, name):
+        for app in self.cache:
+            if app["name"] == name:
+                self.cache.remove(app)
+                self.saveCache()
+                break
         for app in self.appList:
             if app.name == name:
                 self.appList.remove(app) #从队列移除

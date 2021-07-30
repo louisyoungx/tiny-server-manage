@@ -120,6 +120,10 @@ function goBack() {
     window.location = "/";
 }
 
+function goMenu() {
+    window.location = "/menu.html"
+}
+
 // const system_url = 'http://0.0.0.0:12000/api/system-info'
 // const active_url = 'http://0.0.0.0:12000/api/active-info'
 // const config_url = 'http://0.0.0.0:12000/api/config'

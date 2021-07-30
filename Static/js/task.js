@@ -1,47 +1,48 @@
-const system_url = '/api/system-info'
-const active_url = '/api/active-info'
-const config_url = '/api/config'
-const app_status_url = '/api/app-status' + window.location.search
+const system_url = '/api/system-info';
+const active_url = '/api/active-info';
+const config_url = '/api/config';
+const app_status_url = '/api/app-status' + window.location.search;
 
-let system_info = {}
-let active_info = {}
-let config_info = {}
-let app_status_info = {}
+let system_info = {};
+let active_info = {};
+let config_info = {};
+let app_status_info = {};
 
 
 run = function run() {
-    console.log("===== start =====")
+    console.log("===== start =====");
+    initDragbox();
     before()
-}
+};
 
-run()
+run();
 
 function before() {
-    console.log("===== before =====")
+    console.log("===== before =====");
     const ajaxPromise = (url) => {
         return new Promise((resolve) => {
             axios.get(url)
                 .then(function (response) {
-                    let res = response.data.data
+                    let res = response.data.data;
                     resolve(res);
                 }).catch((err) => {
                 console.error(err);
             })
         })
-    }
+    };
 
     let system_get = ajaxPromise(system_url).then(data => {
         system_info = data
-    })
+    });
     let active_get = ajaxPromise(active_url).then(data => {
         active_info = data
-    })
+    });
     let config_get = ajaxPromise(config_url).then(data => {
         config_info = data
-    })
+    });
     let app_status_get = ajaxPromise(app_status_url).then(data => {
         app_status_info = data
-    })
+    });
     Promise.all([
         system_get,
         active_get,
@@ -53,13 +54,13 @@ function before() {
 }
 
 function main() {
-    console.log("===== main =====")
-    console.log(system_info)
-    console.log(active_info)
-    console.log(config_info)
-    console.log(app_status_info)
+    console.log("===== main =====");
+    console.log(system_info);
+    console.log(active_info);
+    console.log(config_info);
+    console.log(app_status_info);
 
-    initTitle()
+    initTitle();
 
     changePage("overview")
 }
@@ -69,7 +70,7 @@ function initTitle() {
 }
 
 function changePage(name) {
-    let mount = document.getElementById("mount")
+    let mount = document.getElementById("mount");
     if (name === "overview") {
         mount.innerHTML = overviewPage()
     } else if (name === "config") {
@@ -96,8 +97,8 @@ function goDelete() {
         text: "此选项不可恢复",
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: 'rgba(84, 58, 183, 0.5)',
+        cancelButtonColor: 'rgba(0, 172, 193, 0.5)',
         confirmButtonText: '删除!'
     }).then((result) => {
         if (result.value === true) {
@@ -107,28 +108,38 @@ function goDelete() {
 }
 
 function taskPage(event) {
-    let elem = event.path[0]
-    let name = elem.name
-    let selected = document.getElementsByClassName("model-button-selected")[0]
-    selected.setAttribute("class", "model-button-item")
-    elem.setAttribute("class", "model-button-item model-button-selected")
+    let elem = event.path[0];
+    let name = elem.name;
+    let selected = document.getElementsByClassName("model-button-selected")[0];
+    selected.setAttribute("class", "model-button-item");
+    elem.setAttribute("class", "model-button-item model-button-selected");
     changePage(name)
 }
 
 function deleteApp(name) {
-    console.log(name)
-    let url = '/api/app-delete?name=' + app_status_info.name
+    console.log(name);
+    let url = '/api/app-delete?name=' + app_status_info.name;
     axios.get(url)
         .then(function (response) {
-            let res = response.data.data
+            let res = response.data.data;
             Swal.fire(
                 '删除成功',
                 app_status_info.name + '已被删除',
                 res
-            )
+            ).then((result) => {
+                if (result.value === true) {
+                    window.location = "/"
+                }
+            });
+
         }).catch((err) => {
         console.error(err);
     })
+}
+
+function initDragbox() {
+  dragbox.scrollLeft = 50;
+  dragbox.scrollTop = 150;
 }
 
 
@@ -159,6 +170,7 @@ function configPage() {
                 <br>
             </div>`
         }
+
         function itemHTMLMake(model) {
             let html = ""
             for (let item in model) {
@@ -166,11 +178,10 @@ function configPage() {
             }
             return html
         }
+
         mount.innerHTML = HTML
     })
 }
-
-
 
 
 // overview *************************************
