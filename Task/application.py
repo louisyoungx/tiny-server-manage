@@ -156,8 +156,8 @@ class Application(object):
     def stop(self):
         """杀进程"""
         try:
-            os.system("kill -9" + self.pid())
             self.process.kill()
+            os.system("kill -9" + str(self.pid()))
             self.status = 0
         except Exception as e:
             logger.error(e)
