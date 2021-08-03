@@ -43,18 +43,21 @@ class TaskManager(object):
     def loadApps(self):
         cache = []
         for appConf in self.cache:
-            application = Application(
-                name=appConf["name"],
-                environment=appConf["environment"],
-                main=appConf["main"],
-                args=appConf["args"],
-                exec_dir=appConf["exec_dir"],
-                daemon=appConf["daemon"],
-                max_retry=appConf["max_retry"],
-                config_file=appConf["config_file"]
-            )
-            self.appList.append(application)
-            cache.append(application.launchParams())
+            try:
+                application = Application(
+                    name=appConf["name"],
+                    environment=appConf["environment"],
+                    main=appConf["main"],
+                    args=appConf["args"],
+                    exec_dir=appConf["exec_dir"],
+                    daemon=appConf["daemon"],
+                    max_retry=appConf["max_retry"],
+                    config_file=appConf["config_file"]
+                )
+                self.appList.append(application)
+                cache.append(application.launchParams())
+            except Exception as e:
+                logger.error(e)
         self.cache = cache
         self.saveCache()
 

@@ -203,14 +203,16 @@ function template_active() {
     let environ = ""
     let open_files = ""
 
-    param.process.threads.forEach((thread) => {
-        threads += `
-            <div class="row-item">
-                <p class="glass-content">${thread[0]}</p>
-                <p class="glass-content">${thread[1]}</p>
-                <p class="glass-content">${thread[2]}</p>
-            </div>`
-    })
+    if (param.process.threads) {
+        param.process.threads.forEach((thread) => {
+            threads += `
+                <div class="row-item">
+                    <p class="glass-content">${thread[0]}</p>
+                    <p class="glass-content">${thread[1]}</p>
+                    <p class="glass-content">${thread[2]}</p>
+                </div>`
+        })
+    }
 
     for (item in param.process.environ) {
         environ += `

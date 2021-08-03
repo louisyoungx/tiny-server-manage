@@ -16,7 +16,7 @@ class Application(object):
     main = ""  # 主文件
     args = ""  # 启动参数
     exec_dir = ""  # 执行目录
-    config_file = ""
+    config_file = "" # 设置目录
     daemon = True
     status = 0
     config = None
@@ -75,19 +75,18 @@ class Application(object):
         :return True / False
         """
         if not os.path.exists(self.exec_dir):
-            logger.error("APP-{} Work Directory Do Not Exist: {}".format(self.name, self.exec_dir))
-            self.status = 0
-            return False
+            error = "APP-{} Work Directory Do Not Exist: {}".format(self.name, self.exec_dir)
+            logger.error(error)
+            raise Exception(error)
         elif not os.path.exists(self.exec_dir + "/" + self.main):
-            logger.error("APP-{} is not a TinyServer App".format(self.name, self.exec_dir))
-            self.status = 0
-            return False
-        elif not os.path.exists(self.exec_dir + self.config_file):
-            logger.error("APP-{} is not a TinyServer App".format(self.name, self.exec_dir))
-            self.status = 0
-            return False
+            error = "APP-{} Main File Do Not Exist: {}".format(self.name, self.main)
+            logger.error(error)
+            raise Exception(error)
+        elif self.config_file != "" and not os.path.exists(self.exec_dir + self.config_file):
+            error = "APP-{} Config File Do Not Exist: {}".format(self.name, self.config_file)
+            logger.error(error)
+            raise Exception(error)
         else:
-            self.status = 1
             return True
 
     def load_config(self):
@@ -109,11 +108,26 @@ class Application(object):
         :return process :subprocess对象
         """
         start_path = self.exec_dir + "/" + self.main
-        # command = "{} {}".format(self.environment, start_path)
-        args = [self.environment, start_path, self.args]
+        command = ""
 
-        process = subprocess.Popen(args, shell=False, cwd=self.exec_dir)
-        # out = process.stdout.readlines()
+        if self.environment != "":
+            command = command + self.environment
+        else:
+            command = command + " " + start_path
+            command = command + " " + self.args
+
+        if self.config_file == "":
+            path = config.path() + config.settings("Logger", "FILE_PATH")
+            filename = path + self.name + ".log"
+            if not os.path.exists(path):
+                os.mkdir(path)
+            with open(filename, "w") as file:
+                file.seek(0)
+                file.truncate()  # 清空文件
+            command = command + " > " + filename
+
+        process = subprocess.Popen(command, shell=True, cwd=self.exec_dir)
+        logger.info(command)
         self.process = process
         self.status = 1
         self.last_time = self.getTime()
@@ -158,7 +172,10 @@ class Application(object):
         """返回日志文件
         :return log: 日志
         """
-        log_file = self.exec_dir + self.config["Logger"]["file_path"] + self.config["Logger"]["file_name"]
+        if self.config_file == "":
+            log_file = config.path() + config.settings("Logger", "FILE_PATH") + self.name + ".log"
+        else:
+            log_file = self.exec_dir + self.config["Logger"]["file_path"] + self.config["Logger"]["file_name"]
         with open(log_file) as file:
             content = file.read()
         return content
@@ -195,10 +212,11 @@ class Application(object):
             info['open_files'] = psutil_process.open_files() # 进程打开的文件
             info['connections'] = psutil_process.connections() # 进程相关网络连接
             info['num_threads'] = psutil_process.num_threads() # 进程的线程数量
-            info['threads'] = psutil_process.threads() # 所有线程信息 id, user_time, system_time
             info['environ'] = psutil_process.environ() # 进程环境变量
             info['cpu_percent'] = psutil_process.cpu_percent(interval=1) # 进程的CPU使用率
             info['memory_percent'] = psutil_process.memory_percent() # 进程的内存使用率
+            try: info['threads'] = psutil_process.threads() # 所有线程信息 id, user_time, system_time
+            except: pass
         return info
 
     def runningStatus(self):

@@ -7,6 +7,7 @@ import psutil
 
 from Config.settings import config
 from Message.message import sendFriendMessage
+from Task.application import Application
 from Task.task import task
 
 
@@ -83,11 +84,7 @@ def appCreate(request):
         return "no receive name or exec_dir"
     name = data["name"]
     exec_dir = data["exec_dir"]
-
-    if data["environment"] == "":
-        environment = "python3"
-    else:
-        environment = data["environment"]
+    environment = data["environment"]
 
     if data["main"] == "":
         main = "runserver.py"
@@ -109,12 +106,10 @@ def appCreate(request):
     else:
         max_retry = eval(data["max_retry"])
 
-    if data["config_file"] == "":
-        config_file = "/Config/config.ini"
-    else:
-        config_file = data["config_file"]
+    config_file = data["config_file"]
+
     try:
-        task.append(
+        app = Application(
             name=name,
             environment=environment,
             main=main,
@@ -122,10 +117,12 @@ def appCreate(request):
             exec_dir=exec_dir,
             daemon=daemon,
             max_retry=max_retry,
-            config_file=config_file,
-            application=None)
+            config_file=config_file)
+        task.append(
+            application=app)
     except Exception as e:
-        return e
+        return str(e)
+
     return "Success"
 
 def appDelete(request):
