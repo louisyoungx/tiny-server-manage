@@ -108,26 +108,16 @@ class Application(object):
         :return process :subprocess对象
         """
         start_path = self.exec_dir + "/" + self.main
-        command = ""
+        # command = "{} {}".format(self.environment, start_path)
+        args = []
 
         if self.environment != "":
-            command = command + self.environment
+            args.append(self.environment)
         else:
-            command = command + " " + start_path
-            command = command + " " + self.args
+            args.append(start_path)
+            args.append(self.args)
 
-        if self.config_file == "":
-            path = config.path() + config.settings("Logger", "FILE_PATH")
-            filename = path + self.name + ".log"
-            if not os.path.exists(path):
-                os.mkdir(path)
-            with open(filename, "w") as file:
-                file.seek(0)
-                file.truncate()  # 清空文件
-            command = command + " > " + filename
-
-        process = subprocess.Popen(command, shell=True, cwd=self.exec_dir)
-        logger.info(command)
+        process = subprocess.Popen(args, shell=False, cwd=self.exec_dir)
         self.process = process
         self.status = 1
         self.last_time = self.getTime()
@@ -155,12 +145,8 @@ class Application(object):
 
     def stop(self):
         """杀进程"""
-        try:
-            self.process.kill()
-            os.system("kill -9" + str(self.pid()))
-            self.status = 0
-        except Exception as e:
-            logger.error(e)
+        self.process.kill()
+        self.status = 0
 
     def pid(self):
         """查看进程PID
