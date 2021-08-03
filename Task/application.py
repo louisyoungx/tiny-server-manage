@@ -113,6 +113,8 @@ class Application(object):
 
         if self.environment != "":
             args.append(self.environment)
+            args.append(start_path)
+            args.append(self.args)
         else:
             args.append(start_path)
             args.append(self.args)
