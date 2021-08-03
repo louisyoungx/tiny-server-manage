@@ -159,8 +159,8 @@ class Application(object):
             os.system("kill -9" + self.pid())
             self.process.kill()
             self.status = 0
-        except:
-            self.status = 0
+        except Exception as e:
+            logger.error(e)
 
     def pid(self):
         """查看进程PID
