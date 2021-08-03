@@ -162,10 +162,8 @@ class Application(object):
         """返回日志文件
         :return log: 日志
         """
-        if self.config_file == "":
-            log_file = config.path() + config.settings("Logger", "FILE_PATH") + self.name + ".log"
-        else:
-            log_file = self.exec_dir + self.config["Logger"]["file_path"] + self.config["Logger"]["file_name"]
+
+        log_file = self.exec_dir + self.config["Logger"]["file_path"] + self.config["Logger"]["file_name"]
         with open(log_file) as file:
             content = file.read()
         return content
