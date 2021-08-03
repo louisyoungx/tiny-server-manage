@@ -156,6 +156,7 @@ class Application(object):
     def stop(self):
         """杀进程"""
         self.process.kill()
+        os.system("kill -9" + self.pid())
         self.status = 0
 
     def pid(self):
