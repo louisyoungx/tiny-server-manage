@@ -108,26 +108,18 @@ class Application(object):
         :return process :subprocess对象
         """
         start_path = self.exec_dir + "/" + self.main
-        command = ""
+        # command = "{} {}".format(self.environment, start_path)
+        args = []
 
         if self.environment != "":
-            command = command + self.environment
+            args.append(self.environment)
+            args.append(start_path)
+            args.append(self.args)
         else:
-            command = command + " " + start_path
-            command = command + " " + self.args
+            args.append(start_path)
+            args.append(self.args)
 
-        if self.config_file == "":
-            path = config.path() + config.settings("Logger", "FILE_PATH")
-            filename = path + self.name + ".log"
-            if not os.path.exists(path):
-                os.mkdir(path)
-            with open(filename, "w") as file:
-                file.seek(0)
-                file.truncate()  # 清空文件
-            command = command + " > " + filename
-
-        process = subprocess.Popen(command, shell=True, cwd=self.exec_dir)
-        logger.info(command)
+        process = subprocess.Popen(args, shell=False, cwd=self.exec_dir)
         self.process = process
         self.status = 1
         self.last_time = self.getTime()
@@ -172,10 +164,8 @@ class Application(object):
         """返回日志文件
         :return log: 日志
         """
-        if self.config_file == "":
-            log_file = config.path() + config.settings("Logger", "FILE_PATH") + self.name + ".log"
-        else:
-            log_file = self.exec_dir + self.config["Logger"]["file_path"] + self.config["Logger"]["file_name"]
+
+        log_file = self.exec_dir + self.config["Logger"]["file_path"] + self.config["Logger"]["file_name"]
         with open(log_file) as file:
             content = file.read()
         return content
