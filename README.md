@@ -1,7 +1,11 @@
 # TinyServerManage
 
 #### 1. 介绍
-​		服务器Python项目web管理器，可查看应用进程概况，系统资源情况，并可启动/关闭项目
+​		云原生时代的服务器web进程管理器，可查看应用进程概况，进程性能监视，系统资源情况，并可启动/关闭项目进程，类似python-supervisor
+
+##### 演示
+![globe](./Docs/001.jpg)
+![globe](./Docs/002.jpg)
 
 #### 2. 主要功能
 - 通过web管理服务器运行的Python项目
