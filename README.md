@@ -1,7 +1,7 @@
 # TinyServerManage
 
 #### 1. 介绍
-​		云原生时代的服务器web进程管理器，可查看应用进程概况，进程性能监视，系统资源情况，并可启动/关闭项目进程，类似python-supervisor
+​		云原生时代的采用web ui实现serverless进程管理器，可查看应用进程概况，进程性能监视，系统资源情况，并可启动/关闭项目进程，类似python-supervisor
 
 ##### 演示
 ![globe](./Docs/001.jpg)
