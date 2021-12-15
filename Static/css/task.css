@@ -5,6 +5,8 @@ body {
     --background-left: rgba(84, 58, 183, 1);
     --background-right: rgba(0, 172, 193, 1);
     --font-color: rgba(255, 255, 255, 0.76);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent; 
 }
 
 h1 {
