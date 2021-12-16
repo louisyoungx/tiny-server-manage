@@ -3,6 +3,10 @@ body {
   -webkit-tap-highlight-color: transparent; 
 }
 
+button {
+  outline: none;
+}
+
 .loader {
     --color: white;
     --size-mid: 6vmin;

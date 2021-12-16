@@ -6,6 +6,10 @@ body {
     -webkit-tap-highlight-color: transparent; 
 }
 
+button {
+    outline: none;
+}
+
 h1 {
     font-family: "Lato", sans-serif;
     font-weight: 300;
