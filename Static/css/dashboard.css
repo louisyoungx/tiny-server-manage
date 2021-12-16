@@ -106,6 +106,15 @@ p {
     flex-direction: column;
 }
 
+#glass-text::-webkit-scrollbar {
+    background: rgba(93, 117, 153, 0.1);
+    width: 5px;
+}
+
+#glass-text::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+}
+
 .liquidFillGaugeText {
     font-family: Helvetica;
     font-weight: bold;
@@ -560,91 +569,68 @@ p {
 
 /*Shrinking for PC*/
 @media only screen and (min-device-width: 768px) {
-    .waves {
-        height: 40px;
-        min-height: 40px;
-    }
-
     .content {
-        height: auto;
+        display: none;
     }
-
+    #buttom-title {
+        font-size: 1.5vh!important;
+    }
     .inner-header {
-        transform: translateY(2vh);
+        height: 85vh;
     }
-
-    h1 {
-        font-size: 24px;
-        margin: 0;
-    }
-
-    .glass {
-        min-height: 600px;
-        width: 30vw;
-        border-radius: 1vw;
-    }
-
-    .glass-container {
-        width: 29vw;
-        height: 100%;
-    }
-
-    .glass-title {
-        font-size: 24px;
-    }
-
-    .glass-button {
-        font-size: 24px;
-    }
-
-    .glass-input {
-        font-size: 20px;
-    }
-
-    #glass-text {
-        margin-top: 2vh;
-        font-size: 20px;
-        height: 100%;
-    }
-
-    .item-time {
-        font-size: 20px;
-    }
-
     .waves {
-        height: 5vh;
+        transform
     }
-
-    .glass-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        font-size: 20px;
+    #head-title {
+        font-size: 24px;
     }
-
-    .glass-input::-moz-placeholder { /* Firefox 19+ */
-        font-size: 20px;
+    #glass-text {
+        flex-direction: row;
     }
-
-    .glass-input::-ms-input-placeholder { /* IE 10+ */
-        font-size: 20px;
-    }
-
-    .glass-input::-moz-placeholder { /* Firefox 18- */
-        font-size: 20px;
-    }
-
-    .application-container {
+    #fillgauge-1 {
         height: 20vh;
+        width: 20vh;
+        overflow: inherit;
+        transform: scale(.6);
     }
-    ::-webkit-scrollbar {
-      display: none; /* Chrome Safari */
+    #fillgauge-2 {
+        height: 20vh;
+        width: 20vh;
+        overflow: inherit;
+        transform: scale(.6);
     }
-    .goMenu {
-        right: 35vw;
-        font-size: 2vh;
+    .title-model-1 {
+        height: auto;
+        flex-direction: column;
     }
-    .inner-header {
-        pointer-events: none;
+    .title-model-2 {
+        margin-top: 5vh;
+    }
+    .model-app {
+        margin-right: 7vw;
+    }
+    .glass-hr {
+        margin: 3vh 0;
+    }
+    .glass-gauge {
+        width: 70%;
+    }
+    .glass-gauge-title {
+        width: 70%;
     }
     .glass {
-        pointer-events: all;
+        overflow: hidden;
     }
+    .application-list {
+        height: 60vh;
+        overflow: auto;
+    }
+    .application-list::-webkit-scrollbar {
+        background: rgba(93, 117, 153, 0.1);
+        width: 5px;
+    }
+    .application-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.4);
+    }
+
 }
