@@ -2,6 +2,8 @@ import json
 import os
 import sys
 import time
+import asyncio
+import threading
 
 from Task.application import Application
 from Config.settings import config
@@ -153,10 +155,22 @@ class TaskManager(object):
         """负载信息
         :return info: dict
         """
-        appInfo = []
-        for app in self.appList:
-            appInfo.append(app.runningStatus())
-        return appInfo
+        start = time.time()
+        threadList = []
+        result = [None] * len(self.appList)
+        for i in range(len(self.appList)):
+            app = self.appList[i]
+            this = threading.Thread(target=self.appStatus, args=(app, result, i))
+            threadList.append(this)
+            this.setDaemon(True)
+            this.start()
+        for this in threadList:
+            this.join()
+        return result
+    
+
+    def appStatus(self, app, res, i):
+        res[i] = app.runningStatus()
 
 task = TaskManager()
 
